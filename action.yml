@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPLv3
+name: 'Setup Lix'
+author: 'Lunaphied'
+description: Use the Lix installer to download a release of Lix and install it.
+runs:
+  using: 'composite'
+  steps:
+    - name: Fetch and execute installer
+      run: curl -sSf -L https://install.lix.systems/lix | sh -s -- install linux --no-confirm --init none
+    - name: Add to path
+      run: echo "/nix/var/nix/profiles/default/bin" >>"$FORGEJO_PATH"
