@@ -5,7 +5,10 @@ description: Use the Lix installer to download a release of Lix and install it.
 runs:
   using: 'composite'
   steps:
-    - name: Fetch and execute installer
-      run: curl -sSf -L https://install.lix.systems/lix | sh -s -- install linux --no-confirm --init none
-    - name: Add to path
-      run: echo "/nix/var/nix/profiles/default/bin" >>"$FORGEJO_PATH"
+    - name: Fetch and execute installer and add to path
+      run: |
+        if [ ! -f /nix/receipt.json  ]; then
+          curl -sSf -L https://install.lix.systems/lix | sh -s -- install linux --no-confirm --init none
+        fi
+        # Add to the path for the next actions.
+        echo "/nix/var/nix/profiles/default/bin" >>"$GITHUB_PATH"
