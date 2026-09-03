@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  doctor:
+  ping:
     runs-on: ubuntu-latest
 
     # Run this action and check that we can actually use Lix
     steps:
       - uses: actions/checkout@v7
       - uses: ./
-      - run: sudo -E nix doctor
+      - run: nix store ping
