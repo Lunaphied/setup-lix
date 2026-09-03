@@ -6,6 +6,7 @@ runs:
   using: 'composite'
   steps:
     - name: Fetch and execute installer and add to path
+      shell: bash
       run: |
         if [ ! -f /nix/receipt.json  ]; then
           curl -sSf -L https://install.lix.systems/lix | sh -s -- install linux --no-confirm --init none
