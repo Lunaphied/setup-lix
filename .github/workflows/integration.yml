@@ -17,5 +17,6 @@ jobs:
 
     # Run this action and check that we can actually use Lix
     steps:
+      - uses: actions/checkout@v7
       - uses: ./
       - run: nix doctor
