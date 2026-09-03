@@ -19,4 +19,4 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./
-      - run: sudo nix doctor
+      - run: sudo -E nix doctor
